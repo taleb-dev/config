@@ -85,10 +85,10 @@ nnoremap <leader>fi :action Find<CR>
 nnoremap <leader>ri :action Replace<CR>
 nnoremap <leader>sf :action FindInPath<CR>
 nnoremap <leader>sr :action ReplaceInPath<CR>
-
+nnoremap <leader>fs :action FileStructurePopup<CR>
 " --- Run & Debug ---
 nnoremap <leader>ru :action Run<CR>
-nnoremap <leader>s :action Stop<CR>
+nnoremap <leader>st :action Stop<CR>
 nnoremap <leader>d :action Debug<CR>
 nnoremap <leader>c :action ChooseRunConfiguration<CR>
 nnoremap <leader>b :action ToggleLineBreakpoint<CR>
