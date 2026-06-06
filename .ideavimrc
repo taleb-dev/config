@@ -78,6 +78,8 @@ nnoremap <leader>rn :action RenameElement<CR>
 nnoremap <leader>rc :action ReformatCode<CR>
 nnoremap <leader><CR> :action ShowIntentionActions<CR>
 nnoremap <leader>n :action Generate<CR>
+" Open the 'Refactor This' menu (Context-aware refactoring options)
+nnoremap <leader>rf :action Refactorings.QuickListPopupAction<CR>
 
 " --- Search & Replace ---
 " f = Find, r = Replace, sf = Search Files, sr = Search/Replace in Files
