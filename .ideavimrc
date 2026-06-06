@@ -105,7 +105,8 @@ nnoremap <leader>gu :action Vcs.RollbackChangedLines<CR>
 nnoremap <leader>gc :action CheckinProject<CR>
 nnoremap <leader>gh :action Vcs.ShowTabbedFileHistory<CR>
 nnoremap <leader>gb :action Annotate<CR>
-
+nnoremap <leader>gb :action Annotate<CR>
+nnoremap <leader>gl :action Vcs.UpdateProject<CR>
 " --- Tabless Buffer Navigation ---
 
 " Open Recent Files popup (The absolute core of a tabless workflow)
