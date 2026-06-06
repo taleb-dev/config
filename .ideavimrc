@@ -1,0 +1,105 @@
+" --- Core Settings ---
+let mapleader=" "
+set timeoutlen=2000
+set showcmd
+set scrolloff=5
+set incsearch
+set surround
+set ideajoin
+set argtextobj
+set clipboard+=unnamedplus
+
+" Don't use Ex mode, use Q for formatting.
+map Q gq
+
+" --- Plugins ---
+Plug 'machakann/vim-highlightedyank'
+Plug 'tpope/vim-commentary'
+
+" --- Movement & Selection ---
+" Jump to next/prev argument
+nnoremap ]a f,w
+nnoremap [a F,b
+
+" Move single lines up/down in Normal Mode
+nnoremap J :m +1<CR>==
+nnoremap K :m -2<CR>==
+
+" Move blocks of lines up/down in Visual Mode
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+" Flash search
+nmap s <Action>(flash.search)
+xmap s <Action>(flash.search)
+
+" Jump to next snippet/parameter
+nnoremap <Tab> :action NextParameter<CR>
+
+" Navigate IDE popups
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+cnoremap <C-j> <Down>
+cnoremap <C-k> <Up>
+
+" Increment/Decrement
+nnoremap <C-a> :DialIncrement<cr>
+nnoremap <C-x> :DialDecrement<cr>
+
+" --- Window & Tab Management ---
+" Native Vim Splits
+nnoremap <leader>v :vsplit<CR>
+nnoremap <leader>h :split<CR>
+
+" Navigate splits
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" Close current tab
+nnoremap <C-q> :action CloseContent<CR>
+
+" Hide all tool windows and maximize the editor (Toggle)
+nnoremap <leader>wm :action HideAllWindows<CR>
+
+" --- Code Navigation ---
+nnoremap gi :action GotoImplementation<CR>
+nnoremap gd :action GotoDeclaration<CR>
+nnoremap gu :action FindUsages<CR>
+nnoremap <C-o> :action Back<CR>
+nnoremap <C-i> :action Forward<CR>
+nnoremap <leader>ff :action GotoFile<CR>
+nnoremap <leader>fc :action GotoClass<CR>
+nnoremap <leader>fp :action SelectInProjectView<CR>
+
+" --- Code Editing & Refactoring ---
+nnoremap <leader>rn :action RenameElement<CR>
+nnoremap <leader>rc :action ReformatCode<CR>
+nnoremap <leader><CR> :action ShowIntentionActions<CR>
+nnoremap <leader>n :action Generate<CR>
+
+" --- Search & Replace ---
+" f = Find, r = Replace, sf = Search Files, sr = Search/Replace in Files
+nnoremap <leader>fi :action Find<CR>
+nnoremap <leader>ri :action Replace<CR>
+nnoremap <leader>sf :action FindInPath<CR>
+nnoremap <leader>sr :action ReplaceInPath<CR>
+
+" --- Run & Debug ---
+nnoremap <leader>ru :action Run<CR>
+nnoremap <leader>s :action Stop<CR>
+nnoremap <leader>d :action Debug<CR>
+nnoremap <leader>c :action ChooseRunConfiguration<CR>
+nnoremap <leader>b :action ToggleLineBreakpoint<CR>
+nnoremap <leader>B :action ViewBreakpoints<CR>
+nnoremap <leader>mb :action XDebugger.MuteBreakpoints<CR>
+
+" --- Git Integration ---
+nnoremap ]c :action VcsShowNextChangeMarker<CR>
+nnoremap [c :action VcsShowPrevChangeMarker<CR>
+nnoremap <leader>gr :action ChangesView.Revert<CR>
+nnoremap <leader>gu :action Vcs.RollbackChangedLines<CR>
+nnoremap <leader>gc :action CheckinProject<CR>
+nnoremap <leader>gh :action Vcs.ShowTabbedFileHistory<CR>
+nnoremap <leader>gb :action Annotate<CR>
