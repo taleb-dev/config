@@ -116,3 +116,6 @@ nnoremap <leader>o :action OverrideMethods<CR>
 
 " Implement methods from an interface (Equivalent to Ctrl+I)
 nnoremap <leader>i :action ImplementMethods<CR>
+
+" Open and focus the Terminal window
+nnoremap <leader>t :action ActivateTerminalToolWindow<CR>
