@@ -111,4 +111,8 @@ nnoremap <leader>e :action RecentFiles<CR>
 
 " Open Recent Locations popup (Shows the actual code snippets you recently edited)
 nnoremap <leader>E :action RecentLocations<CR>
+" Override methods from a superclass (Equivalent to Ctrl+O)
+nnoremap <leader>o :action OverrideMethods<CR>
 
+" Implement methods from an interface (Equivalent to Ctrl+I)
+nnoremap <leader>i :action ImplementMethods<CR>
