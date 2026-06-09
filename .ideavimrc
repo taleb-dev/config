@@ -8,18 +8,18 @@ set surround
 set ideajoin
 set argtextobj
 set clipboard+=unnamedplus
-
+set anyobject
+set hlsearch
+set ignorecase
+set smartcase
 " Don't use Ex mode, use Q for formatting.
 map Q gq
+nnoremap <Esc> :nohlsearch<cr>
 
 " --- Plugins ---
 Plug 'machakann/vim-highlightedyank'
 Plug 'tpope/vim-commentary'
 
-" --- Movement & Selection ---
-" Jump to next/prev argument
-nnoremap ]a f,w
-nnoremap [a F,b
 
 " Move single lines up/down in Normal Mode
 nnoremap J :m +1<CR>==
@@ -66,18 +66,46 @@ nnoremap <leader>wm :action HideAllWindows<CR>
 " --- Code Navigation ---
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gd :action GotoDeclaration<CR>
+nnoremap <leader>gy :action GotoTypeDeclaration<CR>
 nnoremap gu :action FindUsages<CR>
+nnoremap <leader>fu :action FindUsages<CR>
+nnoremap <leader>su :action ShowUsages<CR>
+nnoremap <A-]> :action MethodDown<CR>
+nnoremap <A-[> :action MethodUp<CR>
+nnoremap ]e :action GotoNextError<CR>
+nnoremap [e :action GotoPreviousError<CR>
+nnoremap <leader>p :action ActivateProblemsViewToolWindow<CR>
 nnoremap <C-o> :action Back<CR>
 nnoremap <C-i> :action Forward<CR>
 nnoremap <leader>ff :action GotoFile<CR>
 nnoremap <leader>fc :action GotoClass<CR>
+nnoremap <leader>fm :action GotoSymbol<CR>
 nnoremap <leader>fp :action SelectInProjectView<CR>
+nnoremap <leader>fn :action NewScratchFile<CR>
+nnoremap <leader>af :action NewFile<CR>
+nnoremap <leader>ad :action NewDir<CR>
+
+" Keep selection after indenting
+xnoremap < <gv
+xnoremap > >gv
+
+" Center the screen when jumping through search results
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
 
 " --- Code Editing & Refactoring ---
 nnoremap <leader>rn :action RenameElement<CR>
 nnoremap <leader>rc :action ReformatCode<CR>
+nnoremap <leader>ro :action OptimizeImports<CR>
+nnoremap <leader>ra :action RearrangeCode<CR>
+nnoremap <A-j> :action MoveStatementDown<CR>
+nnoremap <A-k> :action MoveStatementUp<CR>
 nnoremap <leader><CR> :action ShowIntentionActions<CR>
 nnoremap <leader>n :action Generate<CR>
+nnoremap <leader>sw :action SurroundWith<CR>
+nnoremap <C-d> :action EditorDuplicate<CR>
+vnoremap <C-d> :action EditorDuplicate<CR>
 " Open the 'Refactor This' menu (Context-aware refactoring options)
 nnoremap <leader>rf :action Refactorings.QuickListPopupAction<CR>
 
@@ -105,15 +133,17 @@ nnoremap <leader>gu :action Vcs.RollbackChangedLines<CR>
 nnoremap <leader>gc :action CheckinProject<CR>
 nnoremap <leader>gh :action Vcs.ShowTabbedFileHistory<CR>
 nnoremap <leader>gb :action Annotate<CR>
-nnoremap <leader>gb :action Annotate<CR>
+nnoremap <leader>gp :action Vcs.Push<CR>
 nnoremap <leader>gl :action Vcs.UpdateProject<CR>
 " --- Tabless Buffer Navigation ---
 
 " Open Recent Files popup (The absolute core of a tabless workflow)
 nnoremap <leader>e :action RecentFiles<CR>
+nnoremap <C-e> :action RecentFiles<CR>
 
 " Open Recent Locations popup (Shows the actual code snippets you recently edited)
 nnoremap <leader>E :action RecentLocations<CR>
+nnoremap <C-S-e> :action RecentLocations<CR>
 " Override methods from a superclass (Equivalent to Ctrl+O)
 nnoremap <leader>o :action OverrideMethods<CR>
 
