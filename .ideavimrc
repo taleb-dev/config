@@ -2,7 +2,7 @@
 let mapleader=" "
 set timeoutlen=2000
 set showcmd
-set scrolloff=5
+set scrolloff=999
 set incsearch
 set surround
 set ideajoin
@@ -12,11 +12,13 @@ set anyobject
 set hlsearch
 set ignorecase
 set smartcase
+set quickscope
 " Enable IdeaVim in dialog & single-line editors (e.g. Database tool window cell/console editors)
 set ideavimsupport=dialog,singleline
 " Don't use Ex mode, use Q for formatting.
 map Q gq
-nnoremap <Esc> :nohlsearch<cr>
+" Clear search highlight (Esc is left free for Flash cancel)
+nnoremap <leader>sc :nohlsearch<cr>
 
 " --- Plugins ---
 Plug 'machakann/vim-highlightedyank'
@@ -34,6 +36,10 @@ vnoremap K :m '<-2<CR>gv=gv
 " Flash search
 nmap s <Action>(flash.search)
 xmap s <Action>(flash.search)
+nmap S <Action>(flash.treesitter)
+xmap S <Action>(flash.treesitter)
+" Remote operator: e.g. yr<flash-jump><textobj> to act on a distant location
+omap r <Action>(flash.remote)
 
 " Jump to next snippet/parameter
 nnoremap <Tab> :action NextParameter<CR>
@@ -106,8 +112,8 @@ nnoremap <A-k> :action MoveStatementUp<CR>
 nnoremap <leader><CR> :action ShowIntentionActions<CR>
 nnoremap <leader>n :action Generate<CR>
 nnoremap <leader>sw :action SurroundWith<CR>
-nnoremap <C-d> :action EditorDuplicate<CR>
-vnoremap <C-d> :action EditorDuplicate<CR>
+nnoremap <A-d> :action EditorDuplicate<CR>
+vnoremap <A-d> :action EditorDuplicate<CR>
 " Open the 'Refactor This' menu (Context-aware refactoring options)
 nnoremap <leader>rf :action Refactorings.QuickListPopupAction<CR>
 
@@ -159,4 +165,4 @@ nnoremap <leader>t :action ActivateTerminalToolWindow<CR>
 nnoremap <leader>db :action ActivateDatabaseToolWindow<CR>
 
 " Open and focus the Project (files) tool window
-nnoremap <leader>pf :action ActivateProjectToolWindow<CR>
+nnoremap <leader>wp :action ActivateProjectToolWindow<CR>
