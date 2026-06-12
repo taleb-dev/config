@@ -12,12 +12,12 @@ set anyobject
 set hlsearch
 set ignorecase
 set smartcase
-set quickscope
 " Enable IdeaVim in dialog & single-line editors (e.g. Database tool window cell/console editors)
 set ideavimsupport=dialog,singleline
 " Don't use Ex mode, use Q for formatting.
 map Q gq
-" Clear search highlight (Esc is left free for Flash cancel)
+" Clear search highlight (Esc is left free so it can cancel Flash)
+nnoremap <C-c> :nohlsearch<cr>
 nnoremap <leader>sc :nohlsearch<cr>
 
 " --- Plugins ---
@@ -37,7 +37,8 @@ vnoremap K :m '<-2<CR>gv=gv
 nmap s <Action>(flash.search)
 xmap s <Action>(flash.search)
 nmap S <Action>(flash.treesitter)
-xmap S <Action>(flash.treesitter)
+" Force visual-mode S to surround (overrides native change-line S)
+xmap S <Plug>VSurround
 " Remote operator: e.g. yr<flash-jump><textobj> to act on a distant location
 omap r <Action>(flash.remote)
 
@@ -105,17 +106,21 @@ nnoremap N Nzzzv
 " --- Code Editing & Refactoring ---
 nnoremap <leader>rn :action RenameElement<CR>
 nnoremap <leader>rc :action ReformatCode<CR>
+xnoremap <leader>rc :action ReformatCode<CR>
 nnoremap <leader>ro :action OptimizeImports<CR>
+xnoremap <leader>ro :action OptimizeImports<CR>
 nnoremap <leader>ra :action RearrangeCode<CR>
 nnoremap <A-j> :action MoveStatementDown<CR>
 nnoremap <A-k> :action MoveStatementUp<CR>
 nnoremap <leader><CR> :action ShowIntentionActions<CR>
 nnoremap <leader>n :action Generate<CR>
 nnoremap <leader>sw :action SurroundWith<CR>
+xnoremap <leader>sw :action SurroundWith<CR>
 nnoremap <A-d> :action EditorDuplicate<CR>
 vnoremap <A-d> :action EditorDuplicate<CR>
 " Open the 'Refactor This' menu (Context-aware refactoring options)
 nnoremap <leader>rf :action Refactorings.QuickListPopupAction<CR>
+xnoremap <leader>rf :action Refactorings.QuickListPopupAction<CR>
 
 " --- Search & Replace ---
 " f = Find, r = Replace, sf = Search Files, sr = Search/Replace in Files
