@@ -12,6 +12,8 @@ set anyobject
 set hlsearch
 set ignorecase
 set smartcase
+" Enable IdeaVim in dialog & single-line editors (e.g. Database tool window cell/console editors)
+set ideavimsupport=dialog,singleline
 " Don't use Ex mode, use Q for formatting.
 map Q gq
 nnoremap <Esc> :nohlsearch<cr>
@@ -152,3 +154,9 @@ nnoremap <leader>i :action ImplementMethods<CR>
 
 " Open and focus the Terminal window
 nnoremap <leader>t :action ActivateTerminalToolWindow<CR>
+
+" Open and focus the Database tool window
+nnoremap <leader>db :action ActivateDatabaseToolWindow<CR>
+
+" Open and focus the Project (files) tool window
+nnoremap <leader>pf :action ActivateProjectToolWindow<CR>
