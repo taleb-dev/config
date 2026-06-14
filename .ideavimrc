@@ -131,6 +131,11 @@ nnoremap <leader>sr :action ReplaceInPath<CR>
 nnoremap <leader>fs :action FileStructurePopup<CR>
 " --- Run & Debug ---
 nnoremap <leader>ru :action Run<CR>
+" Run/Debug the test case under the caret (method or class)
+nnoremap <leader>rt :action RunClass<CR>
+nnoremap <leader>rd :action DebugClass<CR>
+" Rerun the failed tests from the last run
+nnoremap <leader>rT :action RerunFailedTests<CR>
 nnoremap <leader>st :action Stop<CR>
 nnoremap <leader>d :action Debug<CR>
 nnoremap <leader>c :action ChooseRunConfiguration<CR>
