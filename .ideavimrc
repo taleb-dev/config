@@ -176,3 +176,9 @@ nnoremap <leader>db :action ActivateDatabaseToolWindow<CR>
 
 " Open and focus the Project (files) tool window
 nnoremap <leader>wp :action ActivateProjectToolWindow<CR>
+
+" --- Maven ---
+" Open and focus the Maven tool window
+nnoremap <leader>mv :action ActivateMavenToolWindow<CR>
+" Execute a Maven goal (type e.g. clean install)
+nnoremap <leader>mg :action Maven.ExecuteGoal<CR>
