@@ -151,8 +151,23 @@ nnoremap <leader>gu :action Vcs.RollbackChangedLines<CR>
 nnoremap <leader>gc :action CheckinProject<CR>
 nnoremap <leader>gh :action Vcs.ShowTabbedFileHistory<CR>
 nnoremap <leader>gb :action Annotate<CR>
+" Open the Git branches popup (checkout / create / merge branches;
+" type the branch name and press Enter to check it out)
+nnoremap <leader>gc :action Git.Branches<CR>
 nnoremap <leader>gp :action Vcs.Push<CR>
 nnoremap <leader>gl :action Vcs.UpdateProject<CR>
+" Fetch / merge
+nnoremap <leader>gf :action Git.Fetch<CR>
+nnoremap <leader>gm :action Git.Merge<CR>
+" Stash / unstash
+nnoremap <leader>gs :action Git.Stash<CR>
+nnoremap <leader>gS :action Git.Unstash<CR>
+" Diff current file against the repository version
+nnoremap <leader>gd :action Compare.SameVersion<CR>
+" Resolve merge conflicts
+nnoremap <leader>gx :action Git.ResolveConflicts<CR>
+" Open the Version Control (Git log) tool window
+nnoremap <leader>gv :action ActivateVersionControlToolWindow<CR>
 " --- Tabless Buffer Navigation ---
 
 " Open Recent Files popup (The absolute core of a tabless workflow)
