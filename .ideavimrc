@@ -167,6 +167,8 @@ nnoremap <leader>gb :action Annotate<CR>
 " Open the Git branches popup (checkout / create / merge branches;
 " type the branch name and press Enter to check it out)
 nnoremap <leader>gB :action Git.Branches<CR>
+" Create & checkout a new branch from the current branch
+nnoremap <leader>gn :action Git.CreateNewBranch<CR>
 nnoremap <leader>gp :action Vcs.Push<CR>
 nnoremap <leader>gl :action Vcs.UpdateProject<CR>
 " Fetch / merge
@@ -209,3 +211,5 @@ nnoremap <leader>P :action ManageRecentProjects<CR>
 nnoremap <leader>mv :action ActivateMavenToolWindow<CR>
 " Execute a Maven goal (type e.g. clean install)
 nnoremap <leader>mg :action Maven.ExecuteGoal<CR>
+" Sync / reimport all Maven projects (reload pom.xml changes)
+nnoremap <leader>ms :action Maven.Reimport<CR>
