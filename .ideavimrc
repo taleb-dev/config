@@ -110,8 +110,10 @@ xnoremap <leader>rc :action ReformatCode<CR>
 nnoremap <leader>ro :action OptimizeImports<CR>
 xnoremap <leader>ro :action OptimizeImports<CR>
 nnoremap <leader>ra :action RearrangeCode<CR>
-nnoremap <A-j> :action MoveStatementDown<CR>
-nnoremap <A-k> :action MoveStatementUp<CR>
+nnoremap <A-S-j> :action MoveStatementDown<CR>
+nnoremap <A-S-k> :action MoveStatementUp<CR>
+vnoremap <A-S-j> :action MoveStatementDown<CR>
+vnoremap <A-S-k> :action MoveStatementUp<CR>
 nnoremap <leader><CR> :action ShowIntentionActions<CR>
 nnoremap <leader>n :action Generate<CR>
 nnoremap <leader>sw :action SurroundWith<CR>
@@ -157,8 +159,12 @@ nnoremap <leader>B :action ViewBreakpoints<CR>
 nnoremap <leader>mb :action XDebugger.MuteBreakpoints<CR>
 
 " --- Git Integration ---
-nnoremap ]c :action VcsShowNextChangeMarker<CR>
-nnoremap [c :action VcsShowPrevChangeMarker<CR>
+" Jump to next/previous VCS change (git hunk) and recenter the view.
+" Alt+j / Alt+k = primary (one-handed); ]c / [c kept as the standard backup.
+nnoremap <A-j> :action VcsShowNextChangeMarker<CR>zz
+nnoremap <A-k> :action VcsShowPrevChangeMarker<CR>zz
+nnoremap ]c :action VcsShowNextChangeMarker<CR>zz
+nnoremap [c :action VcsShowPrevChangeMarker<CR>zz
 nnoremap <leader>gr :action ChangesView.Revert<CR>
 nnoremap <leader>gu :action Vcs.RollbackChangedLines<CR>
 nnoremap <leader>gc :action CheckinProject<CR>
