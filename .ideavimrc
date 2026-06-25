@@ -12,7 +12,6 @@ set anyobject
 set hlsearch
 set ignorecase
 set smartcase
-set ideamarks   " (on by default)
 " Enable IdeaVim in dialog & single-line editors (e.g. Database tool window cell/console editors)
 set ideavimsupport=dialog,singleline
 " Don't use Ex mode, use Q for formatting.
@@ -40,23 +39,11 @@ xmap s <Action>(flash.search)
 nmap S <Action>(flash.treesitter)
 " Force visual-mode S to surround (overrides native change-line S)
 xmap S <Plug>VSurround
-" Remote operator: e.g. yr<flash-jump><textobj> to act on a distant location
-omap r <Action>(flash.remote)
-
-" Flash char motions (smartcase-aware: respect ignorecase + smartcase above).
-" Remap the whole f/F/t/T/;/, set so repeat (; ,) stays in sync.
+" Enhanced f via Flash (labelled char find) instead of native f
 nmap f <Action>(flash.find)
 xmap f <Action>(flash.find)
-nmap F <Action>(flash.find_backward)
-xmap F <Action>(flash.find_backward)
-nmap t <Action>(flash.till)
-xmap t <Action>(flash.till)
-nmap T <Action>(flash.till_backward)
-xmap T <Action>(flash.till_backward)
-nmap ; <Action>(flash.repeat)
-xmap ; <Action>(flash.repeat)
-nmap , <Action>(flash.repeat_backward)
-xmap , <Action>(flash.repeat_backward)
+" Remote operator: e.g. yr<flash-jump><textobj> to act on a distant location
+omap r <Action>(flash.remote)
 
 " Jump to next snippet/parameter
 nnoremap <Tab> :action NextParameter<CR>
@@ -81,6 +68,16 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+" Maximize the current editor split (| and = both maximize, for muscle memory)
+nnoremap <C-w>\| :action MaximizeEditorInSplit<CR>
+nnoremap <C-w>= :action MaximizeEditorInSplit<CR>
+
+" Extend / stretch the current split toward a direction
+nnoremap <C-w><Up> :action StretchSplitToTop<CR>
+nnoremap <C-w><Down> :action StretchSplitToBottom<CR>
+nnoremap <C-w><Left> :action StretchSplitToLeft<CR>
+nnoremap <C-w><Right> :action StretchSplitToRight<CR>
 
 " Close current tab
 nnoremap <C-q> :action CloseContent<CR>
@@ -117,17 +114,6 @@ xnoremap > >gv
 " Center the screen when jumping through search results
 nnoremap n nzzzv
 nnoremap N Nzzzv
-
-" --- Bookmarks ---
-" Toggle a bookmark on the current line
-nnoremap <leader>mm :action ToggleBookmark<CR>
-" Open the searchable bookmarks popup (jump to any bookmark)
-nnoremap <leader>ml :action ShowBookmarks<CR>
-" Open and focus the Bookmarks tool window
-nnoremap <leader>mt :action ActivateBookmarksToolWindow<CR>
-" Jump to next / previous bookmark and recenter
-nnoremap ]b :action GotoNextBookmark<CR>zz
-nnoremap [b :action GotoPreviousBookmark<CR>zz
 
 
 " --- Code Editing & Refactoring ---
@@ -195,6 +181,8 @@ nnoremap [c :action VcsShowPrevChangeMarker<CR>zz
 nnoremap <leader>gr :action ChangesView.Revert<CR>
 nnoremap <leader>gu :action Vcs.RollbackChangedLines<CR>
 nnoremap <leader>gc :action CheckinProject<CR>
+" Clone a project from version control (Get from Version Control)
+nnoremap <leader>gC :action Git.Clone<CR>
 nnoremap <leader>gh :action Vcs.ShowTabbedFileHistory<CR>
 nnoremap <leader>gb :action Annotate<CR>
 " Open the Git branches popup (checkout / create / merge branches;
@@ -216,7 +204,7 @@ nnoremap <leader>gx :action Git.ResolveConflicts<CR>
 nnoremap <leader>gv :action ActivateVersionControlToolWindow<CR>
 " --- Tabless Buffer Navigation ---
 
-    " Open Recent Files popup (The absolute core of a tabless workflow)
+" Open Recent Files popup (The absolute core of a tabless workflow)
 nnoremap <leader>e :action RecentFiles<CR>
 
 " Open Recent Locations popup (Shows the actual code snippets you recently edited)
