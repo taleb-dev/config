@@ -12,6 +12,7 @@ set anyobject
 set hlsearch
 set ignorecase
 set smartcase
+set ideamarks   " (on by default)
 " Enable IdeaVim in dialog & single-line editors (e.g. Database tool window cell/console editors)
 set ideavimsupport=dialog,singleline
 " Don't use Ex mode, use Q for formatting.
@@ -41,6 +42,21 @@ nmap S <Action>(flash.treesitter)
 xmap S <Plug>VSurround
 " Remote operator: e.g. yr<flash-jump><textobj> to act on a distant location
 omap r <Action>(flash.remote)
+
+" Flash char motions (smartcase-aware: respect ignorecase + smartcase above).
+" Remap the whole f/F/t/T/;/, set so repeat (; ,) stays in sync.
+nmap f <Action>(flash.find)
+xmap f <Action>(flash.find)
+nmap F <Action>(flash.find_backward)
+xmap F <Action>(flash.find_backward)
+nmap t <Action>(flash.till)
+xmap t <Action>(flash.till)
+nmap T <Action>(flash.till_backward)
+xmap T <Action>(flash.till_backward)
+nmap ; <Action>(flash.repeat)
+xmap ; <Action>(flash.repeat)
+nmap , <Action>(flash.repeat_backward)
+xmap , <Action>(flash.repeat_backward)
 
 " Jump to next snippet/parameter
 nnoremap <Tab> :action NextParameter<CR>
@@ -101,6 +117,17 @@ xnoremap > >gv
 " Center the screen when jumping through search results
 nnoremap n nzzzv
 nnoremap N Nzzzv
+
+" --- Bookmarks ---
+" Toggle a bookmark on the current line
+nnoremap <leader>mm :action ToggleBookmark<CR>
+" Open the searchable bookmarks popup (jump to any bookmark)
+nnoremap <leader>ml :action ShowBookmarks<CR>
+" Open and focus the Bookmarks tool window
+nnoremap <leader>mt :action ActivateBookmarksToolWindow<CR>
+" Jump to next / previous bookmark and recenter
+nnoremap ]b :action GotoNextBookmark<CR>zz
+nnoremap [b :action GotoPreviousBookmark<CR>zz
 
 
 " --- Code Editing & Refactoring ---
@@ -189,7 +216,7 @@ nnoremap <leader>gx :action Git.ResolveConflicts<CR>
 nnoremap <leader>gv :action ActivateVersionControlToolWindow<CR>
 " --- Tabless Buffer Navigation ---
 
-" Open Recent Files popup (The absolute core of a tabless workflow)
+    " Open Recent Files popup (The absolute core of a tabless workflow)
 nnoremap <leader>e :action RecentFiles<CR>
 
 " Open Recent Locations popup (Shows the actual code snippets you recently edited)
