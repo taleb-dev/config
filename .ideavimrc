@@ -192,6 +192,8 @@ nnoremap <leader>gB :action Git.Branches<CR>
 nnoremap <leader>gn :action Git.CreateNewBranch<CR>
 nnoremap <leader>gp :action Vcs.Push<CR>
 nnoremap <leader>gl :action Vcs.UpdateProject<CR>
+" Update (pull) the current branch from its tracked remote
+nnoremap <leader>gU :action Git.Pull<CR>
 " Fetch / merge
 nnoremap <leader>gf :action Git.Fetch<CR>
 nnoremap <leader>gm :action Git.Merge<CR>
@@ -220,6 +222,12 @@ nnoremap <leader>t :action ActivateTerminalToolWindow<CR>
 
 " Open and focus the Database tool window
 nnoremap <leader>db :action ActivateDatabaseToolWindow<CR>
+
+" Open and focus the Services tool window
+nnoremap <leader>ws :action ActivateServicesToolWindow<CR>
+
+" Open and focus the Debug tool window
+nnoremap <leader>wd :action ActivateDebugToolWindow<CR>
 
 " Open and focus the Project (files) tool window
 nnoremap <leader>wp :action ActivateProjectToolWindow<CR>
