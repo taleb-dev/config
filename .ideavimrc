@@ -102,6 +102,7 @@ nnoremap <C-i> :action Forward<CR>
 nnoremap <leader>ff :action GotoFile<CR>
 nnoremap <leader>fc :action GotoClass<CR>
 nnoremap <leader>fm :action GotoSymbol<CR>
+nnoremap <leader>fa :action GotoAction<CR>
 nnoremap <leader>fp :action SelectInProjectView<CR>
 nnoremap <leader>fn :action NewScratchFile<CR>
 nnoremap <leader>af :action NewFile<CR>
