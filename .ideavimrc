@@ -107,6 +107,8 @@ nnoremap <leader>fp :action SelectInProjectView<CR>
 nnoremap <leader>fn :action NewScratchFile<CR>
 nnoremap <leader>af :action NewFile<CR>
 nnoremap <leader>ad :action NewDir<CR>
+" New Java class/file (opens the New Class dialog)
+nnoremap <leader>aj :action NewClass<CR>
 
 " Keep selection after indenting
 xnoremap < <gv
@@ -185,6 +187,8 @@ nnoremap <leader>gc :action CheckinProject<CR>
 " Clone a project from version control (Get from Version Control)
 nnoremap <leader>gC :action Git.Clone<CR>
 nnoremap <leader>gh :action Vcs.ShowTabbedFileHistory<CR>
+" Show VCS history for the selected lines (visual mode)
+xnoremap <leader>gh :action Vcs.ShowHistoryForBlock<CR>
 nnoremap <leader>gb :action Annotate<CR>
 " Open the Git branches popup (checkout / create / merge branches;
 " type the branch name and press Enter to check it out)
@@ -229,6 +233,12 @@ nnoremap <leader>ws :action ActivateServicesToolWindow<CR>
 
 " Open and focus the Debug tool window
 nnoremap <leader>wd :action ActivateDebugToolWindow<CR>
+
+" Open and focus the Git (Version Control) tool window
+nnoremap <leader>wg :action ActivateVersionControlToolWindow<CR>
+
+" Open and focus the Structure tool window
+nnoremap <leader>wt :action ActivateStructureToolWindow<CR>
 
 " Open and focus the Project (files) tool window
 nnoremap <leader>wp :action ActivateProjectToolWindow<CR>
